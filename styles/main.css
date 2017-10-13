@@ -79,7 +79,7 @@ button {
 
 .item {
   width: 20%;
-  padding: 2em;
+  padding: 2rem;
 }
 
 /*These are the grid stylings for half-screen */
@@ -131,11 +131,9 @@ button {
   font-size: 2vw;
   margin: 0 0 0 7.1em;
 }  
-
-.item-container {width: 100%;}
   
 .item {
-  width: 30%;
+  width: 33%;
   padding: 1em;
 }
   
@@ -207,8 +205,6 @@ button {
   margin: 0 0 0 8em;
 }
   
-.item-container {width: 100%;}
-
 .item {
   width: 100%;
   padding: 1em;
@@ -294,17 +290,17 @@ font-family: 'Chewy', cursive; */
   font-family: 'Indie Flower';
 }
 
-ul {
+nav>ul {
   background-color: rgb(186, 212, 255);
   box-shadow: .12em .12em .12em .12em rgba(186, 212, 255, 1);
   border-radius: 3%; 
 }
 
-li a {
+nav>ul>li a {
   text-decoration: none;
 }
 
-li {
+nav>ul>li {
   font-weight: bold;
   color: rgb(19, 47, 91);
   padding: .1em;
@@ -350,18 +346,20 @@ p {font-family: 'Sanchez'; color: rgb(19, 47, 91);}
 }
 
 .item {
+  display: block;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
-.item-container {
+.container {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  align-content: space-between;
+  align-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .logo {

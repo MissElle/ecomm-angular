@@ -10,17 +10,19 @@
   <link rel="stylesheet" href="styles/main.css">
   <link href="https://fonts.googleapis.com/css?family=Chewy|Indie+Flower|Permanent+Marker|Sanchez|Amatic+SC" rel="stylesheet"><script src="https://use.fontawesome.com/75360aa574.js"></script>
   
+  <script src="js/angular.min.js"></script>
 </head>
 
 <body>
+
   <div class="row">
     <header>
       <div class="col menu">
         <nav>
           <ul>
-            <li><a href="#">Hats</a></li>
-            <li><a href="#">Gloves</a></li>
-            <li><a href="#">Scarves</a></li>
+            <li><a href="#hats">Hats</a></li>
+            <li><a href="#gloves">Gloves</a></li>
+            <li><a href="#scarves">Scarves</a></li>
             <li class="cart-info" id="cart-count">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </li>
@@ -33,7 +35,7 @@
       </div>
       
       <div class="title">
-        <h1>Winter Wear Warehouse</h1>
+        <h1>Winter WearHouse</h1>
       </div>
     </header>
 
@@ -43,8 +45,9 @@
           <label>Filter By:
             <select name="filter">
               <option value="">Choose One</option>
-              <option value="price">Price</option>
-              <option value="name">Name</option>
+              <option value="price" id="price">Price</option>
+			  <option value="color" id="color">Color</option>
+              <option value="name" id="name">Name</option>
             </select>
           </label>
 
@@ -54,40 +57,8 @@
     </div>
   </div>
   
-  <section>
+  <article>
 
-<!--
-    <div class="item-container">
-      <div class="item">
-        <ul>
-          <li>
-            <p>Stilletto Heels</p>
-            <script type="text/javascript">
-              var item = {
-                "name": "Stiletto Heels",
-                "price": 50.50,
-                "description": "Slim and sleek, high class stiletto heels. These shoes are perfect for a night out on the town or with a special someone. WARNING: Do not purchase if you have an medical conditions of the ankle.",
-                "imageTitle": "stiletto-heels.jpg"
-              }
-              
-              function print(name, description, price) {
-                if (name == "") {
-                  console.log(ERROR-name);
-                } else if (description == "") {
-                  console.log(ERROR-descrition);
-                } else if (price < 0) {
-                  console.log(ERROR-price);
-                } else {
-                  console.log(name + ":" + description + " This product is $" + price +  ".")
-                }
-              }
-              
-              print(item.name, item.description, item.price);
-              
-            </script>
-          </li>
-        </ul>
--->
 
     <div class="row">
       <div class="page">
@@ -96,104 +67,117 @@
       </div>
     </div>
       
-      <div class="item-container">
+      <!-- <div class="item-container" id="item-container"> -->
+	  <ul class="container" id="item-container" ng-app="shoppingApp" ng-controller="scarvesCtrl">
+		<li ng-repeat="product in products" class="item">
+		
+			<h3>{{product.name | uppercase}}</h3>
+			<img srcset="images/{{product.imageName}}.png 1280w, images/{{product.imageName}}-800.png 800w, images/{{product.imageName}}-400.png 400w" sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" src="images/{{product.imageName}}.png" alt="{{product.name}} scarf">
+			<p>{{product.description}}</p>
+			<p>
+				{{product.price | currency}}
+				<button type="button" value="{{product.imageName}}-plus" id="{{product.imageName}}-plus">+</button>
+				<button type="button" value="{{product.imageName}}-minus" id="{{product.imageName}}-minus">-</button>
+			</p>
+		</li>
+	  </ul>
 
-        <div class="item">
-          <button type="button" onclick="cartBasket(0);" value="0">+/-</button>
-          <h3 id="rev-plaid-name"></h3>
-          <img srcset="images/reversible-plaid.jpg 1280w, images/reversible-plaid-800.jpg 800w, images/reversible-plaid-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="0"> -->
+          <!-- <button type="button" onclick="cartBasket(0);" value="0">+/-</button> -->
+          <!-- <h3 id="rev-plaid-name"></h3> -->
+          <!-- <img srcset="images/reversible-plaid.jpg 1280w, images/reversible-plaid-800.jpg 800w, images/reversible-plaid-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/reversible-plaid.jpg" alt="reversible plaid scarf">
-          <p id="rev-plaid-desc"></p>
-          <p id="rev-plaid-price"></p>
-        </div>
+          <!-- src="images/reversible-plaid.jpg" alt="reversible plaid scarf"> -->
+          <!-- <p id="rev-plaid-desc"></p> -->
+          <!-- <p id="rev-plaid-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(4);" value="4">+/-</button>
-          <h3 id="frin-plaid-name"></h3>
-          <img srcset="images/fringed-plaid.jpeg 1280w, images/fringed-plaid-800.jpg 800w, images/fringed-plaid-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="4"> -->
+          <!-- <button type="button" onclick="cartBasket(4);" value="4">+/-</button> -->
+          <!-- <h3 id="fringe-plaid-name"></h3> -->
+          <!-- <img srcset="images/fringed-plaid.jpeg 1280w, images/fringed-plaid-800.jpg 800w, images/fringed-plaid-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/fringed-plaid.jpeg" alt="fringed plaid scarf">
-          <p id="frin-plaid-desc"></p>
-          <p id="frin-plaid-price"></p>
-        </div>
+          <!-- src="images/fringed-plaid.jpeg" alt="fringed plaid scarf"> -->
+          <!-- <p id="frin-plaid-desc"></p> -->
+          <!-- <p id="frin-plaid-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(6);" value="6">+/-</button>
-          <h3 id="etro-name">Etro</h3>
-          <img srcset="images/etro.png 1280w, images/etro-800.png 800w, images/etro-400.png 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="6"> -->
+          <!-- <button type="button" onclick="cartBasket(6);" value="6">+/-</button> -->
+          <!-- <h3 id="etro-name">Etro</h3> -->
+          <!-- <img srcset="images/etro.png 1280w, images/etro-800.png 800w, images/etro-400.png 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/etro.png" alt="etro scarf">
-          <p id="etro-desc"></p>
-          <p id="etro-price"></p>
-        </div>
+          <!-- src="images/etro.png" alt="etro scarf"> -->
+          <!-- <p id="etro-desc"></p> -->
+          <!-- <p id="etro-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(5);" value="5">+/-</button>
-          <h3 id="multi-name"></h3>
-          <img srcset="images/multi-color.jpeg 1280w, images/multi-color-800.jpg 800w, images/multi-color-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="5"> -->
+          <!-- <button type="button" onclick="cartBasket(5);" value="5">+/-</button> -->
+          <!-- <h3 id="multi-name"></h3> -->
+          <!-- <img srcset="images/multi-color.jpeg 1280w, images/multi-color-800.jpg 800w, images/multi-color-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/multi-color.jpeg" alt="multi-color scarf">
-          <p id="multi-desc"></p>
-          <p id="multi-price">$22.99</p>
-        </div>
+          <!-- src="images/multi-color.jpeg" alt="multi-color scarf"> -->
+          <!-- <p id="multi-desc"></p> -->
+          <!-- <p id="multi-price">$22.99</p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(2);" value="2">+/-</button>
-          <h3 id="north-name"></h3>
-          <img srcset="images/northern-lights.jpg 1280w, images/northern-lights-800.jpg 800w, images/northern-lights-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="2"> -->
+          <!-- <button type="button" onclick="cartBasket(2);" value="2">+/-</button> -->
+          <!-- <h3 id="north-name"></h3> -->
+          <!-- <img srcset="images/northern-lights.jpg 1280w, images/northern-lights-800.jpg 800w, images/northern-lights-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/northern-lights.jpg" alt="northern lights scarf">
-          <p id="north-desc"></p>
-          <p id="north-price"></p>
-        </div>
+          <!-- src="images/northern-lights.jpg" alt="northern lights scarf"> -->
+          <!-- <p id="north-desc"></p> -->
+          <!-- <p id="north-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(3);" value="3">+/-</button>
-          <h3 id="ombre-name"></h3>
-          <img srcset="images/ombre-infinity.jpg 1280w, images/ombre-infinity-800.jpg 800w, images/ombre-infinity-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="3"> -->
+          <!-- <button type="button" onclick="cartBasket(3);" value="3">+/-</button> -->
+          <!-- <h3 id="ombre-name"></h3> -->
+          <!-- <img srcset="images/ombre-infinity.jpg 1280w, images/ombre-infinity-800.jpg 800w, images/ombre-infinity-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/ombre-infinity.jpg" alt="ombre infinity scarf">
-          <p id="ombre-desc"></p>
-          <p id="ombre-price"></p>
-        </div>
+          <!-- src="images/ombre-infinity.jpg" alt="ombre infinity scarf"> -->
+          <!-- <p id="ombre-desc"></p> -->
+          <!-- <p id="ombre-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(7);" value="7">+/-</button>
-          <h3 id="twill-name">Twill</h3>
-          <img srcset="images/twill.jpg 1280w, images/twill-800.jpg 800w, images/twill-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="7"> -->
+          <!-- <button type="button" onclick="cartBasket(7);" value="7">+/-</button> -->
+          <!-- <h3 id="twill-name">Twill</h3> -->
+          <!-- <img srcset="images/twill.jpg 1280w, images/twill-800.jpg 800w, images/twill-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/twill.jpg" alt="twill scarf">
-          <p id="twill-desc"></p>
-          <p id="twill-price"></p>
-        </div>
+          <!-- src="images/twill.jpg" alt="twill scarf"> -->
+          <!-- <p id="twill-desc"></p> -->
+          <!-- <p id="twill-price"></p> -->
+        <!-- </div> -->
         
-        <div class="item">
-          <button type="button" onclick="cartBasket(1);" value="1">+/-</button>
-          <h3 id="wool-name">Wool Cable</h3>
-          <img srcset="images/wool-cable.jpeg 1280w, images/wool-cable-800.jpg 800w, images/wool-cable-400.jpg 400w"
-          sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px"
+        <!-- <div class="item" id="1"> -->
+          <!-- <button type="button" onclick="cartBasket(1);" value="1">+/-</button> -->
+          <!-- <h3 id="wool-name">Wool Cable</h3> -->
+          <!-- <img srcset="images/wool-cable.jpeg 1280w, images/wool-cable-800.jpg 800w, images/wool-cable-400.jpg 400w" -->
+          <!-- sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" -->
                
-          src="images/wool-cable.jpeg" alt="wool cable scarf">
-          <p id="wool-desc"></p>
-          <p id="wool-price"></p>
-        </div>
+          <!-- src="images/wool-cable.jpeg" alt="wool cable scarf"> -->
+          <!-- <p id="wool-desc"></p> -->
+          <!-- <p id="wool-price"></p> -->
+        <!-- </div> -->
         
-      </div>
+      <!-- </div> -->
     
-  </section>
+  </article>
   
   <div class="row">
     <div class="col w100">
     <footer>
-      <p>Copyright 2017 Elle Pope: All Rights Reserved</p>
+      <p>This website is for demonstration purposes only. These images are not the property of Elle Pope or affiliated company <div id="copyright-name">Poly entertainment</div></p>
     </footer>
     </div>  
   </div>
