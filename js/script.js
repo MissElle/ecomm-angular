@@ -64,9 +64,11 @@ var hats = [
 
 var shoppingApp = angular.module('shoppingApp', []);
 
-shoppingApp.controller('scarvesCtrl', function($scope, $location){
-
-		$scope.products = [
+shoppingApp.controller('productsCtrl', function($scope, $location){
+	
+	  $scope.hashLocation = $location.url();
+	
+		$scope.scarves = [
 		{name: 'Reversible Plaid',
 		price: 26.99,
 		description: 'Two classic patterns in one great look: This supersoft and cozy reversible scarf instantly doubles your street-style cred. 100% acrylic.',
