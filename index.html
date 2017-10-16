@@ -13,18 +13,18 @@
   <script src="js/angular.min.js"></script>
 </head>
 <!-- This is a test comment for a commit -->
-<body>
+<body ng-app="shoppingApp" ng-controller="productsCtrl">
 
   <div class="row">
     <header>
       <div class="col menu">
         <nav>
           <ul>
-            <li><a href="#hats">Hats</a></li>
-            <li><a href="#gloves">Gloves</a></li>
-            <li><a href="#scarves">Scarves</a></li>
+            <li><a href="#hats" ng-click="">Hats</a></li>
+            <li><a href="#gloves"ng-click="">Gloves</a></li>
+            <li><a href="#scarves"ng-click="">Scarves</a></li>
             <li class="cart-info" id="cart-count">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <a href="#cart" ng-click=""><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </li>
           </ul>
         </nav>
@@ -68,8 +68,8 @@
     </div>
       
       <!-- <div class="item-container" id="item-container"> -->
-	  <ul class="container" id="item-container" ng-app="shoppingApp" ng-controller="productsCtrl">
-			<div ng-if="hashLocation === '/#scarves'">
+	  <ul class="container" id="item-container">
+			<div ng-if="hashLocation === '/#scarves' || hashLocation === '/'">
 				<li ng-repeat="scarf in scarves" class="item">
 					<h3>{{scarf.name | uppercase}}</h3>
 					<img srcset="images/{{scarf.imageName}}.png 1280w, images/{{scarf.imageName}}-800.png 800w, images/{{scarf.imageName}}-400.png 400w" sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" src="images/{{scarf.imageName}}.png" alt="{{scarf.name}} scarf">
