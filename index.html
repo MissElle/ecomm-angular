@@ -68,8 +68,7 @@
     </div>
       
       <!-- <div class="item-container" id="item-container"> -->
-	  <ul class="container" id="item-container">
-			<div ng-if="hashLocation === '/#scarves' || hashLocation === '/'">
+	  <ul class="container" id="item-container" ng-if="hashLocation === '/#scarves' || hashLocation === '/'">
 				<li ng-repeat="scarf in scarves" class="item">
 					<h3>{{scarf.name | uppercase}}</h3>
 					<img srcset="images/{{scarf.imageName}}.png 1280w, images/{{scarf.imageName}}-800.png 800w, images/{{scarf.imageName}}-400.png 400w" sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" src="images/{{scarf.imageName}}.png" alt="{{scarf.name}} scarf">
@@ -80,9 +79,9 @@
 						<button type="button" value="{{scarf.imageName}}-minus" id="{{scarf.imageName}}-minus">-</button>
 					</p>
 				</li>
-			</div>
+			</ul>
 			
-			<div ng-if="hashLocation === '/#hats'">
+			<ul class="container" id="item-container" ng-if="hashLocation === '/#hats'">
 				<li ng-repeat="hat in hats" class="item">
 					<h3>{{hat.name | uppercase}}</h3>
 					<img srcset="images/{{hat.imageName}}.png 1280w, images/{{hat.imageName}}-800.png 800w, images/{{hat.imageName}}-400.png 400w" sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" src="images/{{hat.imageName}}.png" alt="{{hat.name}} scarf">
@@ -93,9 +92,9 @@
 						<button type="button" value="{{hat.imageName}}-minus" id="{{hat.imageName}}-minus">-</button>
 					</p>
 				</li>
-			</div>
+			</ul>
 			
-			<div ng-if="hashLocation === '/#gloves'">
+			<ul class="container" id="item-container" ng-if="hashLocation === '/#gloves'">
 				<li ng-repeat="glove in gloves" class="item">
 					<h3>{{glove.name | uppercase}}</h3>
 					<img srcset="images/{{glove.imageName}}.png 1280w, images/{{glove.imageName}}-800.png 800w, images/{{glove.imageName}}-400.png 400w" sizes="(max-width: 800px) 400px, (max-width: 1600px) 800px, (min-width: 1601px) 1200px" src="images/{{glove.imageName}}.png" alt="{{glove.name}} scarf">
@@ -106,9 +105,7 @@
 						<button type="button" value="{{glove.imageName}}-minus" id="{{glove.imageName}}-minus">-</button>
 					</p>
 				</li>
-			</div>
-			
-	  </ul>
+			</ul>
 
         <!-- <div class="item" id="0"> -->
           <!-- <button type="button" onclick="cartBasket(0);" value="0">+/-</button> -->
